@@ -5,6 +5,7 @@
   "options_ui": {
     "page": "src/pages/options/index.html"
   },
+  "options_page": "src/pages/newtab/index.html",
   "background": {
     "service_worker": "src/pages/background/index.ts",
     "type": "module"
@@ -17,7 +18,7 @@
   "icons": {
     "128": "target.png"
   },
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
