@@ -3,10 +3,16 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'spin-slow': 'spin 20s linear infinite',
-      }
+        "spin-slow": "spin 20s linear infinite",
+      },
+    },
+    fontFamily: {
+      customTitle: ['"Volkhov"', "serif"],
+      customDetail: ['"Mulish"', "sans-serif"],
+      customCardTitle: ['"Montserrat"', "sans-serif"],
+      customHandWriting: ['"Comforter Brush"', "cursive"],
     },
   },
-  prefix: '',
+  prefix: "",
   plugins: [],
-}
+};

@@ -1,18 +1,24 @@
 {
   "action": {
-    "default_icon": "public/dev-icon-32.png",
-    "default_popup": "src/pages/popup/index.html"
+    "default_icon": "public/target.png"
   },
+  "background": {
+    "service_worker": "src/pages/background/index.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/pages/content/index.tsx"],
+      "css": ["contentStyle.css"]
+    }
+  ],
   "icons": {
-    "128": "public/dev-icon-128.png"
+    "128": "public/target.png"
   },
   "web_accessible_resources": [
     {
-      "resources": [
-        "contentStyle.css",
-        "dev-icon-128.png",
-        "dev-icon-32.png"
-      ],
+      "resources": ["contentStyle.css", "target.png"],
       "matches": []
     }
   ]
