@@ -13,6 +13,7 @@ module.exports = {
       customHandWriting: ['"Comforter Brush"', "cursive"],
     },
   },
+  parentClass: "tailwind-container",
   prefix: "",
   plugins: [],
 };
