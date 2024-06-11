@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "@pages/newtab/Newtab.css";
 import worker from "@assets/img/worker.png";
 import Card from "./components/Card";
+import { Switch } from "antd";
 
 export default function Newtab({ data }: { data: string[] }): JSX.Element {
   const [initactivepage, setInitActivePage] = useState<string[]>(data);
@@ -15,9 +16,12 @@ export default function Newtab({ data }: { data: string[] }): JSX.Element {
   }, [initactivepage]);
   return (
     <div className="tailwind-container">
-      <div className="flex h-screen bg-white">
-        <div className="m-auto shadow-lg p-6 flex flex-col items-center justify-center gap-2 rounded-xl border-t border-gray-300">
+      <div className="flex h-screen bg-white flex-col">
+        <div className="mx-auto">
           <img src={worker} alt="sample" width={200} height={200} />
+          <Switch />
+        </div>
+        <div>
           <Card
             name="LinkedIn"
             url="www.linkedin.com"
