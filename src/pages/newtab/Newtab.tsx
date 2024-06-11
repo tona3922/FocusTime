@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "@pages/newtab/Newtab.css";
 import worker from "@assets/img/worker.png";
 import Card from "./components/Card";
+import { pagesDetail } from "@src/assets/allpages";
 
 export default function Newtab({ data }: { data: string[] }): JSX.Element {
   const [initactivepage, setInitActivePage] = useState<string[]>(data);
@@ -15,45 +16,25 @@ export default function Newtab({ data }: { data: string[] }): JSX.Element {
   }, [initactivepage]);
   return (
     <div className="tailwind-container">
-      <div className="flex h-screen bg-white">
-        <div className="m-auto shadow-lg p-6 flex flex-col items-center justify-center gap-2 rounded-xl border-t border-gray-300">
+      <div className="flex h-screen bg-white flex-col">
+        <div className="mx-auto my-3 flex flex-col justify-center items-center">
           <img src={worker} alt="sample" width={200} height={200} />
-          <Card
-            name="LinkedIn"
-            url="www.linkedin.com"
-            allActivePage={initactivepage}
-            setInitActivePage={setInitActivePage}
-          />
-          <Card
-            name="Youtube"
-            url="www.youtube.com"
-            allActivePage={initactivepage}
-            setInitActivePage={setInitActivePage}
-          />
-          <Card
-            name="Facebook"
-            url="www.facebook.com"
-            allActivePage={initactivepage}
-            setInitActivePage={setInitActivePage}
-          />
-          <Card
-            name="Messenger"
-            url="www.messenger.com"
-            allActivePage={initactivepage}
-            setInitActivePage={setInitActivePage}
-          />
-          <Card
-            name="Pinterest"
-            url="www.pinterest.com"
-            allActivePage={initactivepage}
-            setInitActivePage={setInitActivePage}
-          />
-          <Card
-            name="Twitter"
-            url="www.twitter.com"
-            allActivePage={initactivepage}
-            setInitActivePage={setInitActivePage}
-          />
+          <div className="font-customDetail text-3xl font-bold">
+            It does not matter how slowly you go so long as you do not stop
+          </div>
+        </div>
+        <div className="grid grid-cols-5 place-items-center w-8/12 mx-auto gap-4">
+          {pagesDetail.map((item: { name: string; url: string }) => {
+            return (
+              <Card
+                key={item.name}
+                name={item.name}
+                url={item.url}
+                allActivePage={initactivepage}
+                setInitActivePage={setInitActivePage}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

@@ -1,5 +1,17 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Switch } from "antd";
+import {
+  Facebook,
+  Instagram,
+  LinkedIn,
+  Messenger,
+  Netflix,
+  Pinterest,
+  Reddit,
+  Tiktok,
+  X_Twitter,
+  Youtube,
+} from "@src/assets/img";
 const Card: React.FC<{
   url: string;
   name: string;
@@ -16,27 +28,56 @@ const Card: React.FC<{
   });
   return (
     <div className="tailwind-container">
-      <div className="bg-white p-2 rounded-lg shadow-lg">
-        <div>{name}</div>
-        <div>abc {isChecked.toString()}</div>
-        <Switch
-          checked={isChecked}
-          onChange={() => {
-            console.log("before check: ", activePage);
-            if (isChecked) {
-              setActivePage((prevPages) =>
-                prevPages.filter((page) => page !== url)
-              );
-              setInitActivePage((prevPages) =>
-                prevPages.filter((page) => page !== url)
-              );
-            } else {
-              setActivePage((prevPages) => [...prevPages, url]);
-              setInitActivePage((prevPages) => [...prevPages, url]);
-            }
-            setIsChecked(!isChecked);
-          }}
+      <div className="bg-white h-40 w-40 rounded-lg shadow-lg flex flex-col justify-center items-center gap-2 hover:-translate-y-2 transition duration-300 ease-in-out delay-150">
+        <img
+          src={
+            name === "Facebook"
+              ? Facebook
+              : name === "Instagram"
+              ? Instagram
+              : name === "YouTube"
+              ? Youtube
+              : name === "LinkedIn"
+              ? LinkedIn
+              : name === "Messenger"
+              ? Messenger
+              : name === "Netflix"
+              ? Netflix
+              : name === "Pinterest"
+              ? Pinterest
+              : name === "Reddit"
+              ? Reddit
+              : name === "Tiktok"
+              ? Tiktok
+              : X_Twitter
+          }
+          alt={`logo_${name}`}
+          width={50}
+          height={50}
         />
+        <div className="text-xl font-customDetail font-semibold">{name}</div>
+        <div className="flex flex-row items-center justify-center gap-2 px-2">
+          <div className="font-customCardTitle font-medium">Inactive</div>
+          <Switch
+            checked={isChecked}
+            onChange={() => {
+              console.log("before check: ", activePage);
+              if (isChecked) {
+                setActivePage((prevPages) =>
+                  prevPages.filter((page) => page !== url)
+                );
+                setInitActivePage((prevPages) =>
+                  prevPages.filter((page) => page !== url)
+                );
+              } else {
+                setActivePage((prevPages) => [...prevPages, url]);
+                setInitActivePage((prevPages) => [...prevPages, url]);
+              }
+              setIsChecked(!isChecked);
+            }}
+          />
+          <div className="font-customCardTitle font-medium">Active</div>
+        </div>
       </div>
     </div>
   );
