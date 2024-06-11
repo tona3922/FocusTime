@@ -1,5 +1,17 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Switch } from "antd";
+import {
+  Facebook,
+  Instagram,
+  LinkedIn,
+  Messenger,
+  Netflix,
+  Pinterest,
+  Reddit,
+  Tiktok,
+  X_Twitter,
+  Youtube,
+} from "@src/assets/img";
 const Card: React.FC<{
   url: string;
   name: string;
@@ -16,11 +28,36 @@ const Card: React.FC<{
   });
   return (
     <div className="tailwind-container">
-      <div className="bg-white h-40 w-40 rounded-lg shadow-lg border-t border-gray-300 flex flex-col justify-center items-center gap-2">
-        <div className="text-xl font-customDetail">{name}</div>
-        <Switch />
+      <div className="bg-white h-40 w-40 rounded-lg shadow-lg flex flex-col justify-center items-center gap-2 hover:-translate-y-2 transition duration-300 ease-in-out delay-150">
+        <img
+          src={
+            name === "Facebook"
+              ? Facebook
+              : name === "Instagram"
+              ? Instagram
+              : name === "YouTube"
+              ? Youtube
+              : name === "LinkedIn"
+              ? LinkedIn
+              : name === "Messenger"
+              ? Messenger
+              : name === "Netflix"
+              ? Netflix
+              : name === "Pinterest"
+              ? Pinterest
+              : name === "Reddit"
+              ? Reddit
+              : name === "Tiktok"
+              ? Tiktok
+              : X_Twitter
+          }
+          alt={`logo_${name}`}
+          width={50}
+          height={50}
+        />
+        <div className="text-xl font-customDetail font-semibold">{name}</div>
         <div className="flex flex-row items-center justify-center gap-2 px-2">
-          <div>inactive</div>
+          <div className="font-customCardTitle font-medium">Inactive</div>
           <Switch
             checked={isChecked}
             onChange={() => {
@@ -39,7 +76,7 @@ const Card: React.FC<{
               setIsChecked(!isChecked);
             }}
           />
-          <div>active</div>
+          <div className="font-customCardTitle font-medium">Active</div>
         </div>
       </div>
     </div>

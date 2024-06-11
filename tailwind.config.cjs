@@ -16,4 +16,7 @@ module.exports = {
   parentClass: "tailwind-container",
   prefix: "",
   plugins: [],
+  corePlugins: {
+    preflight: false,
+  },
 };
