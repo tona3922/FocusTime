@@ -64,5 +64,14 @@ export default defineConfig({
     outDir,
     sourcemap: isDev,
     emptyOutDir: !isDev,
+    rollupOptions: {
+      onwarn(warning, defaultHandler) {
+        if (warning.code === "SOURCEMAP_ERROR") {
+          return;
+        }
+
+        defaultHandler(warning);
+      },
+    },
   },
 });

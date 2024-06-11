@@ -1,8 +1,11 @@
 import { allPages } from "@src/assets/allpages";
-
-console.log("background script loaded");
-chrome.storage.sync.set({ allPages: allPages }, function () {
-  console.log("Data saved");
+chrome.storage.sync.get(["allPages"], function (result) {
+  console.log("Data reload:", result.allPages);
+  if (!result.allPages) {
+    chrome.storage.sync.set({ allPages: allPages }, function () {
+      console.log("Data init first time");
+    });
+  }
 });
 chrome.action.onClicked.addListener(function (tab) {
   chrome.tabs.create({

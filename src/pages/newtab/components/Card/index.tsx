@@ -1,43 +1,54 @@
-import { Switch } from "@mui/material";
-import React, { useEffect, useState } from "react";
-const Card = () => {
-  const [isChecked, setIsChecked] = useState(true);
-  const [activePage, setActivePage] = useState<string[]>([]);
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Switch } from "antd";
+const Card: React.FC<{
+  url: string;
+  name: string;
+  allActivePage: string[];
+  setInitActivePage: Dispatch<SetStateAction<string[]>>;
+}> = ({ url, name, allActivePage, setInitActivePage }) => {
+  const [isChecked, setIsChecked] = useState(
+    allActivePage.includes(url) ? true : false
+  );
+  const [activePage, setActivePage] = useState<string[]>(allActivePage);
 
+  useEffect(() => {
+    console.log(allActivePage);
+  });
   // Initialize activePage from storage
-  useEffect(() => {
-    chrome.storage.sync.get(["allPages"], function (result) {
-      setActivePage(result.allPages || []);
-      setIsChecked(result.allPages.includes("www.facebook.com") ? true : false);
-    });
-  }, []);
-
-  useEffect(() => {
-    // Synchronize activePage with Chrome storage whenever it changes
-    chrome.storage.sync.set({ allPages: activePage }, function () {
-      console.log("Data saved");
-    });
-    chrome.storage.sync.get(["allPages"], function (result) {
-      console.log(result.allPages);
-    });
-  }, [activePage]);
-
+  // useEffect(() => {
+  //   setActivePage(allActivePage);
+  //   console.log("data: ", allActivePage);
+  //   setIsChecked(allActivePage.includes(url) ? true : false);
+  // });
+  // useEffect(() => {
+  //   chrome.storage.sync.set({ allPages: activePage }, function () {
+  //     console.log("Data saved");
+  //   });
+  //   chrome.storage.sync.get(["allPages"], function (result) {
+  //     setActivePage(result.allPages || []);
+  //     setIsChecked(result.allPages.includes(url) ? true : false);
+  //   });
+  // }, [activePage]);
   return (
     <div className="bg-white p-2 rounded-lg shadow-lg">
-      <div>upper</div>
-      <div>facebook</div>
+      <div>{name}</div>
+      <div>abc {isChecked.toString()}</div>
       <Switch
-        defaultChecked={isChecked}
+        checked={isChecked}
         onChange={() => {
+          console.log("before check: ", activePage);
           if (isChecked) {
-            setIsChecked(false);
             setActivePage((prevPages) =>
-              prevPages.filter((page) => page !== "www.facebook.com")
+              prevPages.filter((page) => page !== url)
+            );
+            setInitActivePage((prevPages) =>
+              prevPages.filter((page) => page !== url)
             );
           } else {
-            setIsChecked(true);
-            setActivePage((prevPages) => [...prevPages, "www.facebook.com"]);
+            setActivePage((prevPages) => [...prevPages, url]);
+            setInitActivePage((prevPages) => [...prevPages, url]);
           }
+          setIsChecked(!isChecked);
         }}
       />
     </div>
