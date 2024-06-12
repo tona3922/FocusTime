@@ -3,7 +3,7 @@
 <h1> FocusTime Extension <br/>created by React + Vite + TypeScript + TailwindCSS</h1>
 
 <h5>
-This project, developed as a browser extension, addresses the issue of social media distractions during work. This project is based on the boilerplate <b>vite-web-extension</b> by JohnBra, [Check it out here](https://github.com/JohnBra/vite-web-extension). 
+This project, developed as a browser extension, addresses the issue of social media distractions during work. This project is based on the boilerplate <b>vite-web-extension</b> by JohnBra, <a target="_blank" rel="noopener noreferrer" href="https://github.com/JohnBra/vite-web-extension">Check it out here</a>
 </h5>
 
 </div>
