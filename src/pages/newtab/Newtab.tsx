@@ -3,6 +3,7 @@ import "@pages/newtab/Newtab.css";
 import worker from "@assets/img/worker.png";
 import Card from "./components/Card";
 import { pagesDetail } from "@src/assets/allpages";
+import { Divider } from "antd";
 
 export default function Newtab({ data }: { data: string[] }): JSX.Element {
   const [initactivepage, setInitActivePage] = useState<string[]>(data);
@@ -23,6 +24,14 @@ export default function Newtab({ data }: { data: string[] }): JSX.Element {
             It does not matter how slowly you go so long as you do not stop
           </div>
         </div>
+        <Divider
+          orientation="left"
+          style={{ paddingLeft: 200, paddingRight: 200, height: 30 }}
+        >
+          <div className="text-lg font-semibold font-customDetail">
+            Default block site
+          </div>
+        </Divider>
         <div className="grid grid-cols-5 place-items-center w-8/12 mx-auto gap-4">
           {pagesDetail.map((item: { name: string; url: string }) => {
             return (
@@ -36,6 +45,14 @@ export default function Newtab({ data }: { data: string[] }): JSX.Element {
             );
           })}
         </div>
+        <Divider
+          orientation="left"
+          style={{ paddingLeft: 200, paddingRight: 200, height: 30 }}
+        >
+          <div className="text-lg font-semibold font-customDetail">
+            Additional block site by yourself
+          </div>
+        </Divider>
       </div>
     </div>
   );
