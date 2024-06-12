@@ -1,10 +1,10 @@
 <div align="center">
-<img src="public/target.png" alt="logo"/>
+<img src="public/target.png" alt="logo" width={200}/>
 <h1> FocusTime Extension <br/>created by React + Vite + TypeScript + TailwindCSS</h1>
 
-<h5>
+<h3>
 This project, developed as a browser extension, addresses the issue of social media distractions during work. This project is based on the boilerplate <b>vite-web-extension</b> by JohnBra, <a target="_blank" rel="noopener noreferrer" href="https://github.com/JohnBra/vite-web-extension">Check it out here</a>
-</h5>
+</h3>
 
 </div>
 
