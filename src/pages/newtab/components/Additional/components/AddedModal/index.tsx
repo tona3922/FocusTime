@@ -34,9 +34,12 @@ const AddedModal: React.FC<{
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     console.log("Success:", values);
-    if (values.url_link.at(-1) === "/") {
-      values.url_link = values.url_link.slice(0, -1);
-    }
+    // if (values.url_link.at(-1) === "/") {
+    //   values.url_link = values.url_link.slice(0, -1);
+    // }
+    const urlObj = new URL(values.url_link);
+    values.url_link = `${urlObj.protocol}//${urlObj.hostname}`;
+    // return `${urlObj.protocol}//${urlObj.hostname}`;
     setAddedPage((prev) => [
       ...prev,
       { name: values.name, url_link: values.url_link, isChoosen: true },
