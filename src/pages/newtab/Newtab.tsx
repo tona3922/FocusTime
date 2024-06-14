@@ -4,10 +4,10 @@ import worker from "@assets/img/worker.png";
 import Card from "./components/Card";
 import { pagesDetail } from "@src/assets/allpages";
 import { Divider } from "antd";
+import Additional from "./components/Additional";
 
 export default function Newtab({ data }: { data: string[] }): JSX.Element {
   const [initactivepage, setInitActivePage] = useState<string[]>(data);
-
   useEffect(() => {
     // Initialize activePage from storage
     console.log("reload data", initactivepage);
@@ -53,6 +53,7 @@ export default function Newtab({ data }: { data: string[] }): JSX.Element {
             Additional block site by yourself
           </div>
         </Divider>
+        <Additional />
       </div>
     </div>
   );
