@@ -53,10 +53,7 @@ export default function Newtab({ data }: { data: string[] }): JSX.Element {
             Additional block site by yourself
           </div>
         </Divider>
-        <div>
-          {/* <Additional loadAddedPage={loadAddedPage} /> */}
-          <Additional />
-        </div>
+        <Additional />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Button, Form, FormProps, Input, Modal } from "antd";
+import { Button, Form, FormProps, Input, Modal, message } from "antd";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { TAddedPage } from "../../AddedPage";
 
@@ -9,9 +9,23 @@ const AddedModal: React.FC<{
   const showModal = () => {
     setIsOpen(true);
   };
-
   const handleCancel = () => {
     setIsOpen(false);
+  };
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const success = () => {
+    messageApi.open({
+      type: "success",
+      content: "Added block site successfully",
+    });
+  };
+
+  const error = () => {
+    messageApi.open({
+      type: "error",
+      content: "Error, block site can't be added successfully",
+    });
   };
   type FieldType = {
     name: string;
@@ -27,6 +41,7 @@ const AddedModal: React.FC<{
       ...prev,
       { name: values.name, url_link: values.url_link, isChoosen: true },
     ]);
+    success();
     setIsOpen(false);
   };
 
@@ -34,14 +49,18 @@ const AddedModal: React.FC<{
     errorInfo
   ) => {
     console.log("Failed:", errorInfo);
-    setIsOpen(false);
+    error();
   };
 
   return (
     <>
-      <Modal open={isOpen} onCancel={handleCancel} footer={null}>
-        <div>Modal</div>
+      {contextHolder}
+      <Modal open={isOpen} onCancel={handleCancel} centered footer={null}>
+        <div style={{ fontSize: 20, fontWeight: "bold" }}>
+          Block site added form
+        </div>
         <Form
+          style={{ paddingTop: 12 }}
           name="basic"
           labelCol={{ span: 6 }}
           wrapperCol={{ span: 18 }}
@@ -64,19 +83,31 @@ const AddedModal: React.FC<{
           >
             <Input />
           </Form.Item>
-
-          <Form.Item wrapperCol={{ offset: 6, span: 24 }}>
+          <Form.Item
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+            }}
+          >
             <Button type="primary" htmlType="submit">
-              Submit
+              Add new block site
             </Button>
           </Form.Item>
         </Form>
       </Modal>
       <div
         onClick={showModal}
-        className="bg-white p-4 rounded hover:cursor-pointer"
+        className="bg-white hover:bg-neutral-50 shadow-inner flex flex-col gap-4 justify-center items-center h-40 w-40 rounded-lg hover:cursor-pointer"
       >
-        Click to add modal
+        <div className="text-lg font-customDetail font-medium">
+          Add block site
+        </div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/3032/3032220.png"
+          width={40}
+          height={40}
+        />
       </div>
     </>
   );

@@ -23,8 +23,7 @@ const Additional: React.FC = () => {
     });
   }, [addedPage]);
   return (
-    <div>
-      <div>Additional</div>
+    <div className="grid grid-cols-5 justify-center place-items-center w-8/12 mx-auto gap-4 pb-4">
       <AddedModal setAddedPage={setAddedPage} />
       {addedPage.map((page, index) => {
         return (
