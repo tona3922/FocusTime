@@ -34,9 +34,8 @@ const AddedModal: React.FC<{
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     console.log("Success:", values);
-    if (values.url_link.at(-1) === "/") {
-      values.url_link = values.url_link.slice(0, -1);
-    }
+    const urlObj = new URL(values.url_link);
+    values.url_link = `${urlObj.protocol}//${urlObj.hostname}`;
     setAddedPage((prev) => [
       ...prev,
       { name: values.name, url_link: values.url_link, isChoosen: true },
@@ -69,7 +68,7 @@ const AddedModal: React.FC<{
           autoComplete="off"
         >
           <Form.Item<FieldType>
-            label="Username"
+            label="Site name"
             name="name"
             rules={[{ required: true, message: "Please input your username!" }]}
           >
@@ -77,7 +76,7 @@ const AddedModal: React.FC<{
           </Form.Item>
 
           <Form.Item<FieldType>
-            label="Url link"
+            label="Url(link)"
             name="url_link"
             rules={[{ required: true, message: "Please input your url link!" }]}
           >

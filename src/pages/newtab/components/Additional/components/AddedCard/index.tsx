@@ -22,6 +22,13 @@ const AddedCard: React.FC<{
             <div className="text-xl font-customDetail font-semibold">
               Delete Block Site
             </div>
+            <div className="flex justify-center">
+              <img
+                src="https://cdn-icons-png.flaticon.com/256/7167/7167918.png"
+                width={200}
+                height={200}
+              />
+            </div>
             <div className="text-lg">
               <span className="font-semibold">Site name:</span> {page.name}
             </div>
@@ -39,7 +46,7 @@ const AddedCard: React.FC<{
                   );
                   setIsOpen(false);
                 }}
-                className="bg-red-500 text-white font-semibold px-4 py-2 text-lg rounded-lg border-none"
+                className="bg-red-500 text-white font-semibold px-4 py-2 text-lg rounded-lg border-none hover:cursor-pointer"
               >
                 Delete
               </button>
