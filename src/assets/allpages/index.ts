@@ -8,7 +8,7 @@ export const allPages = [
   "www.reddit.com",
   "www.netflix.com",
   "www.instagram.com",
-  "www.twitter.com",
+  "x.com",
 ];
 export const pagesDetail = [
   { name: "Pinterest", url: "www.pinterest.com" },
@@ -20,5 +20,5 @@ export const pagesDetail = [
   { name: "Reddit", url: "www.reddit.com" },
   { name: "Netflix", url: "www.netflix.com" },
   { name: "Instagram", url: "www.instagram.com" },
-  { name: "Twitter", url: "www.twitter.com" },
+  { name: "Twitter", url: "x.com" },
 ];
